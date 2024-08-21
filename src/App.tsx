@@ -1,12 +1,16 @@
 import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
-import { USE_BROWSER_ROUTER } from "./common/constants";
-import GlobalHeader from "./components/global-header";
-import HomePage from "./pages/home";
+import { USE_BROWSER_ROUTER } from "./common/constants.ts";
+import GlobalHeader from "./components/global-header.tsx";
+import HomePage from "./pages/home.tsx";
 import "./styles/app.scss";
-import NotFound from "./pages/not-found";
+import NotFound from "./pages/not-found.tsx";
 
 import { Authenticator } from "@aws-amplify/ui-react";
+import { Amplify } from 'aws-amplify';
+import outputs from '../amplify_outputs.json';
 import '@aws-amplify/ui-react/styles.css'
+
+Amplify.configure(outputs);
 
 export default function App() {
   const Router = USE_BROWSER_ROUTER ? BrowserRouter : HashRouter;
